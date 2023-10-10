@@ -11,10 +11,12 @@ describe('Gilded Rose', () => {
     const inputItems = [
       new Item('Other', 1, 1), //Quality decreases with sell in
       new Item('Other', 1, 0), //Quality never is negative
+      new Item('Other', 0, 5), //Sell in passes, quality degrades twice as fast
     ]
     const expectedItems = [
       new Item('Other', 0, 0),
       new Item('Other', 0, 0),
+      new Item('Other', -1, 3),
     ]
     const gildedRose = new GildedRose(inputItems);
     const items = gildedRose.updateQuality();
@@ -54,8 +56,8 @@ describe('Gilded Rose', () => {
       new Item('Backstage passes to a TAFKAL80ETC concert', 8, 0), //Quality increases with sell in(less than 10)
       new Item('Backstage passes to a TAFKAL80ETC concert', 5, 0), //Quality increases with sell in(5)
       new Item('Backstage passes to a TAFKAL80ETC concert', 3, 0), //Quality increases with sell in(less than 5)
-      new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20), //Quality increases with sell in(less than 5)
-      new Item('Backstage passes to a TAFKAL80ETC concert', 1, 50), //Quality never is never more than 50
+      new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20), //Quality is zero after sell in
+      new Item('Backstage passes to a TAFKAL80ETC concert', 1, 50), //Quality is never more than 50
     ]
     const expectedItems = [
       new Item('Backstage passes to a TAFKAL80ETC concert', 9, 2),
