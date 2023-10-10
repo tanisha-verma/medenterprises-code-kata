@@ -72,4 +72,18 @@ describe('Gilded Rose', () => {
     expect(items).toStrictEqual(expectedItems);
   });
 
+  it('should test exceptions for Conjured', () => {
+    const inputItems = [
+      new Item('Conjured Mana Cake', 5, 4), //Quality decreases by two times with sell in
+      new Item('Conjured Mana Cake', 1, 3), //Quality never is never less than 0
+    ]
+    const expectedItems = [
+      new Item('Conjured Mana Cake', 4, 2),
+      new Item('Conjured Mana Cake', 0, -1),
+    ]
+    const gildedRose = new GildedRose(inputItems);
+    const items = gildedRose.updateQuality();
+    expect(items).toStrictEqual(expectedItems);
+  });
+
 });

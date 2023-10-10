@@ -42,9 +42,15 @@ export class GildedRose {
       else if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         if (this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1
+          if (this.items[i].name === 'Conjured Mana Cake') {
+            this.items[i].quality = this.items[i].quality - 1
+          }
         }
         if (this.items[i].sellIn <= 0 && this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1
+          if (this.items[i].name === 'Conjured Mana Cake') {
+            this.items[i].quality = this.items[i].quality - 1
+          }
         }
       }
     }
